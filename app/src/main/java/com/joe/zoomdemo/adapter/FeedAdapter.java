@@ -57,8 +57,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             }
         });
         int width = mContext.getResources().getDisplayMetrics().widthPixels/2;
-        int height = (int) (width*(item.getHeight()/item.getWidth()));
-        Log.d("ZoomUp","width:"+width+" height:"+height);
+        int height = (int) (width*(item.getHeight()*1f/item.getWidth()));
         Picasso.with(mContext)
                 .load(item.getImageUrl())
                 .resize(width, height)

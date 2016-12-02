@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.joe.zoomdemo.model.FeedItem;
 import com.joe.zoomdemo.utils.ZoomAnimationUtils;
@@ -59,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
                         int width = getResources().getDisplayMetrics().widthPixels;
-                        int height = (int) (width*(mFeedItem.getHeight()/mFeedItem.getWidth()*1f));
+                        int height = (int) (width*(mFeedItem.getHeight()*1f/mFeedItem.getWidth()));
                         ViewGroup.LayoutParams params = mImageView.getLayoutParams();
                         params.width = width;
                         params.height = height;
@@ -69,14 +68,10 @@ public class DetailActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onBitmapFailed(Drawable errorDrawable) {
-
-                    }
+                    public void onBitmapFailed(Drawable errorDrawable) {}
 
                     @Override
-                    public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                    }
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {}
                 });
     }
 
