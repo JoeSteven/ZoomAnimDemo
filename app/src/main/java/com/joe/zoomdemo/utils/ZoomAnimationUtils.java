@@ -94,6 +94,7 @@ public class ZoomAnimationUtils {
     }
 
     public static void startBackgroundAlphaAnim(final View targetView, final ColorDrawable color, int...values) {
+        if (targetView == null) return;
         if (values == null || values.length == 0) {
             values = new int[]{0, 255};
         }

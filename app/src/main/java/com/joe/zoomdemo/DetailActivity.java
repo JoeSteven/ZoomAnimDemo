@@ -56,14 +56,7 @@ public class DetailActivity extends AppCompatActivity {
                 .into(new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                        int width = getResources().getDisplayMetrics().widthPixels;
-                        int height = (int) (width*(mFeedItem.getHeight()*1f/mFeedItem.getWidth()));
-                        ViewGroup.LayoutParams params = mImageView.getLayoutParams();
-                        params.width = width;
-                        params.height = height;
-                        mImageView.setLayoutParams(params);
-                        mImageView.setImageBitmap(bitmap);
+                        setBitmap(bitmap);
                         tryEnterAnimation();
                     }
 
@@ -73,6 +66,23 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onPrepareLoad(Drawable placeHolderDrawable) {}
                 });
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    private void setBitmap(Bitmap bitmap) {
+        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = (int) (width*(mFeedItem.getHeight()*1f/mFeedItem.getWidth()));
+        ViewGroup.LayoutParams params = mImageView.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        mImageView.setLayoutParams(params);
+        mImageView.setImageBitmap(bitmap);
     }
 
     private void tryEnterAnimation() {
