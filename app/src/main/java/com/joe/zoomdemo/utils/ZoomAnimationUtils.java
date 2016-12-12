@@ -52,11 +52,11 @@ public class ZoomAnimationUtils {
                         .scaleX(1f)
                         .scaleY(1f)
                         .translationX(0)
-                        .translationY(0)
-                        .start();
+                        .translationY(0);
                 if (listener != null) {
                     animator.setListener(listener);
                 }
+                animator.start();
                 return true;
             }
         });
@@ -86,11 +86,11 @@ public class ZoomAnimationUtils {
                 .scaleX(endScaleX)
                 .scaleY(endScaleY)
                 .translationX(translationX)
-                .translationY(translationY)
-                .start();
+                .translationY(translationY);
         if (listener != null) {
             animator.setListener(listener);
         }
+        animator.start();
     }
 
     public static void startBackgroundAlphaAnim(final View targetView, final ColorDrawable color, int...values) {
